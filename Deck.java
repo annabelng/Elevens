@@ -10,12 +10,14 @@ public class Deck {
 	/**
 	 * cards contains all the cards in the deck.
 	 */
-	private List<Card> cards;
+	//declaring ArrayList that will contain all the cards
+	private ArrayList<Card> cards;
 
 	/**
 	 * size is the number of not-yet-dealt cards. Cards are dealt from the top
 	 * (highest index) down. The next card to be dealt is at size - 1.
 	 */
+	//size variable
 	private int size;
 
 	/**
@@ -30,15 +32,26 @@ public class Deck {
 	 * @param values
 	 *            is an array containing all of the card point values.
 	 */
+	//constructor w three arrays passed in
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		//initializing the list of cards
+		cards = new ArrayList<Card>();
+		//traversing through the ranks/point value
+		//because each rank corresponds w a certain point value
 		for (int r = 0; r < ranks.length; r++) {
+			//traversing through the suites
 			for(int s = 0; s < suits.length; s++){
+				//adding the new card - taking values from the arrays in the parameters
+				//ranks and values have same index
+				//suites have separate index
 				Card newCard = new Card(ranks[r], suits[s],values[r]);
+				//adding the new card to the arraylist of cards
 				cards.add(newCard);
 			}
 		}
-		//size = cards.size();
+		//initializing the cards variable to the number of cards in the array list 
+		size = cards.size();
 	}
 
 	/**
@@ -48,12 +61,17 @@ public class Deck {
 	 */
 	public boolean isEmpty() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		//declaring boolean that will check if it is empty or not
 		boolean empty;
-		if (this.cards.size() == 0) {
+		//checks if the size variable is equal to 0
+		if (this.size == 0) {
+			//sets boolean to true if that's the case
 			empty = true;
 		} else {
+			//if not empty, set to false
 			empty = false;
 		}
+		//return the boolean
 		return empty;
 	}
 
@@ -64,6 +82,7 @@ public class Deck {
 	 */
 	public int size() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		//returns the size variable of the specific object
 		return this.size;
 	}
 
@@ -73,13 +92,7 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-		ArrayList<Card> shuffled = new ArrayList<Card>();
-		for (int j = 0, k = 0; j < (cards.size() + 1) / 2; j++, k += 2) {
-			shuffled.add(k, cards.get(j));
-		}
-		for (int j = (cards.size() + 1) / 2, k = 1; j < 52; j++, k += 2) {
-			shuffled.add(k, cards.get(j));
-		}
+		
 	}
 
 	/**
@@ -90,10 +103,16 @@ public class Deck {
 	 */
 	public Card deal() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		//checks if size is greater than 0
+		//has to be greater than 0 in order to be runnable
 		if (size > 0) {
+			//decrements size of that specific object by one
+			//also checks how many cards are left
 			this.size--;
+			//return the card that was just "removed" by returning the last index
 			return cards.get(size);
 		} else {
+			//if size is equal to 0 then deal returns null
 			return null;
 		}
 	}

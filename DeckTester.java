@@ -13,5 +13,13 @@ public class DeckTester {
 		String[]suites = {"diamonds","spades","clubs"};
 		int[] value = {1,2,3};
 		Deck abc = new Deck(ranks, suites, value);
+		System.out.println(abc.size());
+		abc.deal();
+		System.out.println(abc.size());
+		System.out.println(abc.deal());
+		for(int i = 0; i < 7; i++){
+			System.out.println(abc.deal());
+		}
+		System.out.println(abc.isEmpty());
 	}
 }
