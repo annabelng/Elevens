@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * The Deck class represents a shuffled deck of cards. It provides several
@@ -92,7 +93,23 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-		
+        //Use the Random object defined below.
+        Random rand = new Random(101); //do not alter
+        
+        //example use:
+        //generate number between 1 and 100 
+        //inclusive -> rand.nextInt(100-1+1)+1; 
+        //rand.nextInt(range+1)+min
+        Card temp;
+        for(int i = cards.size()-1; i > 0; i--){
+        	int random = rand.nextInt(cards.size()-1);
+        	temp = cards.get(i);
+        	cards.remove(i);
+        	cards.add(i,cards.get(random));
+        	cards.add(random, temp);
+        }
+        size = cards.size();
+        
 	}
 
 	/**
